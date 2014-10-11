@@ -26,7 +26,7 @@
   {
   "remote": "github",
   "revision": "master",
-  "repository": "CRXTeam/android_kernel_lge_msm8226",
+  "repository": "maxprzemo/android_kernel_lge_msm8226",
   "target_path": "kernel/lge/msm8226"
   },
   {
