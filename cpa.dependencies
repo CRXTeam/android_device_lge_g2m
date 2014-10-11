@@ -20,7 +20,7 @@
   {
   "remote": "github",
   "revision": "kitkat",
-  "repository": CRXTeam/vendor_d620,
+  "repository": "CRXTeam/vendor_d620",
   "target_path": "vendor/lge/d620"
   },
   {
