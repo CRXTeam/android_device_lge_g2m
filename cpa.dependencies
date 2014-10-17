@@ -18,21 +18,15 @@
     "target_path": "hardware/qcom/display-caf-new"
   },
   {
-  "remote": "github",
-  "revision": "kitkat",
-  "repository": "CRXTeam/proprietary_vendor_d620",
-  "target_path": "vendor/lge/d620"
-  },
-  {
-  "remote": "github",
-  "revision": "kitkat",
-  "repository": "maxprzemo/android_kernel_lge_msm8226",
-  "target_path": "kernel/lge/msm8226"
-  },
-  {
     "remote": "github",
     "revision": "cm-11.0",
     "repository": "CyanogenMod/android_hardware_qcom_media-caf-new",
     "target_path": "hardware/qcom/media-caf-new"
-  }
+  },
+  {
+      "remote":       "github",
+      "revision":     "master",
+      "repository":   "Zaaap/android_kernel_lge_d620",
+      "target_path":  "kernel/lge/d620"
+   }
 ]

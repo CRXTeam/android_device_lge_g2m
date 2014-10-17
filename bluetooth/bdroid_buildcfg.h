@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 The Android Open Source Project
+ * Copyright (C) 2012 The CyanogenMod Project <http://www.cyanogenmod.org>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +18,7 @@
 #ifndef _BDROID_BUILDCFG_H
 #define _BDROID_BUILDCFG_H
 
-#define BTM_DEF_LOCAL_NAME   "LG G2 Mini"
+#define BTM_DEF_LOCAL_NAME   "LG G2 mini"
 #define BTA_DISABLE_DELAY 1000 /* in milliseconds */
 #define BLUETOOTH_QCOM_SW TRUE
 #define BLUETOOTH_QCOM_LE_INTL_SCAN TRUE

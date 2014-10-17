@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2013 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,33 +18,30 @@ package org.cyanogenmod.hardware;
 
 import org.cyanogenmod.hardware.util.FileUtils;
 
-import java.io.File;
-
 public class VibratorHW {
 
-    private static String AMP_PATH = "/sys/devices/virtual/timed_output/vibrator/vtg_level";
+    private static String NFORCE_PATH = "/sys/devices/platform/tspdrv/nforce_timed";
 
     public static boolean isSupported() {
-        File file = new File(AMP_PATH);
-        return file.exists();
+        return true;
     }
 
     public static int getMaxIntensity()  {
-        return 31;
+        return 127;
     }
     public static int getMinIntensity()  {
-        return 12;
+        return 1;
     }
     public static int getWarningThreshold()  {
-        return -1;
+        return 90;
     }
     public static int getCurIntensity()  {
-        return Integer.parseInt(FileUtils.readOneLine(AMP_PATH));
+        return Integer.parseInt(FileUtils.readOneLine(NFORCE_PATH));
     }
     public static int getDefaultIntensity()  {
-        return 28;
+        return 65;
     }
     public static boolean setIntensity(int intensity)  {
-        return FileUtils.writeLine(AMP_PATH, String.valueOf(intensity));
+        return FileUtils.writeLine(NFORCE_PATH, String.valueOf(intensity));
     }
 }

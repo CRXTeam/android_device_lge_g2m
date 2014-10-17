@@ -1,11 +1,11 @@
 #
-# Copyright 2012 The Android Open Source Project
+# Copyright (C) 2013 The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,17 +14,17 @@
 # limitations under the License.
 #
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
+$(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
-# Get the long list of APNs
-PRODUCT_COPY_FILES := device/sample/etc/apns-full-conf.xml:system/etc/apns-conf.xml
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+# Specific overlay
+DEVICE_PACKAGE_OVERLAYS += device/lge/d620/overlay
 
-# Overlays
-DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
+# 
+PRODUCT_PROPERTY_OVERRIDES += \
+   ro.product.device=g2m \
+   ro.product.model=LG-D620 \
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -52,75 +52,80 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
-    $(LOCAL_PATH)/configs/system/etc/permissions/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
+    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
 
 # Configs
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/system/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/system/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
-    $(LOCAL_PATH)/configs/system/etc/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
-    $(LOCAL_PATH)/configs/system/etc/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
-    $(LOCAL_PATH)/configs/system/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
-    $(LOCAL_PATH)/configs/system/etc/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
-    $(LOCAL_PATH)/configs/system/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
-    $(LOCAL_PATH)/configs/system/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/configs/system/etc/audio_effects.conf:system/etc/audio_effects.conf \
-    $(LOCAL_PATH)/configs/system/etc/boot_fixup:system/etc/boot_fixup \
-    $(LOCAL_PATH)/configs/system/etc/media_codecs.xml:system/etc/media_codecs.xml \
-    $(LOCAL_PATH)/configs/system/etc/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/configs/system/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
-    $(LOCAL_PATH)/configs/system/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf \
-    $(LOCAL_PATH)/configs/system/etc/init.zetaw.fm.sh:system/etc/init.zetaw.fm.sh \
-    $(LOCAL_PATH)/configs/system/etc/init.zetaw.ssr.wifi.sh:system/etc/init.zetaw.ssr.wifi.sh \
-    $(LOCAL_PATH)/configs/system/etc/init.zetaw.wifi.sh:system/etc/init.zetaw.wifi.sh \
-    $(LOCAL_PATH)/configs/system/etc/init.crda.sh:system/etc/init.crda.sh \
-    $(LOCAL_PATH)/configs/system/etc/init.zetaw.post_boot.sh:system/etc/init.zetaw.post_boot.sh \
-    $(LOCAL_PATH)/configs/system/etc/sap.conf:system/etc/sap.conf \
-    $(LOCAL_PATH)/configs/system/etc/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/system/etc/msap.conf:system/etc/msap.conf \
-    $(LOCAL_PATH)/configs/system/etc/clatd.conf:system/etc/clatd.conf \
-    $(LOCAL_PATH)/configs/system/etc/sec_config:system/etc/sec_config \
-    $(LOCAL_PATH)/configs/system/etc/izat.conf:system/etc/izat.conf \
-    $(LOCAL_PATH)/configs/system/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/configs/system/etc/nfc-nci.conf:system/etc/nfc-nci.conf \
-    $(LOCAL_PATH)/configs/system/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    $(LOCAL_PATH)/configs/system/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
-    $(LOCAL_PATH)/configs/system/etc/quipc.conf:system/etc/quipc.conf \
-    $(LOCAL_PATH)/configs/system/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
-    $(LOCAL_PATH)/configs/system/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/lge/d620/prebuilt/etc/wifi/p2p_supplicant_overlay.conf:system/etc/wifi/p2p_supplicant_overlay.conf \
+    device/lge/d620/prebuilt/etc/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf \
+    device/lge/d620/prebuilt/etc/firmware/atmel/S0A47P1_2_07.fw:system/etc/firmware/atmel/S0A47P1_2_07.fw \
     kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/prima/WCNSS_cfg.dat \
     kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/firmware/wlan/prima/WCNSS_qcom_cfg.ini \
-    kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+    kernel/lge/msm8226/drivers/staging/prima/firmware_bin/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    device/lge/d620/prebuilt/etc/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/prima/WCNSS_qcom_wlan_nv.bin \
+    device/lge/d620/prebuilt/etc/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin \
+    device/lge/d620/prebuilt/etc/hostapd/hostapd.accept:system/etc/hostapd/hostapd.accept \
+    device/lge/d620/prebuilt/etc/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
+    device/lge/d620/prebuilt/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
+    device/lge/d620/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
+    device/lge/d620/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    device/lge/d620/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
+    device/lge/d620/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    device/lge/d620/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
+    device/lge/d620/prebuilt/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf \
+    device/lge/d620/prebuilt/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
+    device/lge/d620/prebuilt/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    device/lge/d620/prebuilt/etc/init.zetaw.fm.sh:system/etc/init.zetaw.fm.sh \
+    device/lge/d620/prebuilt/etc/init.zetaw.ssr.wifi.sh:system/etc/init.zetaw.ssr.wifi.sh \
+    device/lge/d620/prebuilt/etc/init.zetaw.wifi.sh:system/etc/init.zetaw.wifi.sh \
+    device/lge/d620/prebuilt/etc/init.crda.sh:system/etc/init.crda.sh \
+    device/lge/d620/prebuilt/etc/init.zetaw.post_boot.sh:system/etc/init.zetaw.post_boot.sh \
+    device/lge/d620/prebuilt/etc/sap.conf:system/etc/sap.conf \
+    device/lge/d620/prebuilt/etc/gps.conf:system/etc/gps.conf \
+    device/lge/d620/prebuilt/etc/msap.conf:system/etc/msap.conf \
+    device/lge/d620/prebuilt/etc/clatd.conf:system/etc/clatd.conf \
+    device/lge/d620/prebuilt/etc/sec_config:system/etc/sec_config \
+    device/lge/d620/prebuilt/etc/izat.conf:system/etc/izat.conf \
+    device/lge/d620/prebuilt/etc/boot_fixup:system/etc/boot_fixup \
+    device/lge/d620/prebuilt/etc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/lge/d620/prebuilt/etc/nfc-nci.conf:system/etc/nfc-nci.conf \
+    device/lge/d620/prebuilt/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    device/lge/d620/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
+    device/lge/d620/prebuilt/etc/quipc.conf:system/etc/quipc.conf \
+
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/rootdir/fstab.g2m:root/fstab.g2m \
-    $(LOCAL_PATH)/configs/rootdir/init.class_main.sh:root/init.class_main.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.lge.early.rc:root/init.lge.early.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.lge.log.rc:root/init.lge.log.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.lge.rc:root/init.lge.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.mdm.sh:root/init.mdm.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.usb.rc:root/init.usb.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.g2m.rc:root/init.g2m.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.g2m.usb.rc:root/init.g2m.usb.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.g2m_product.rc:root/init.g2m_product.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.bt_vendor.rc:root/init.zetaw.bt_vendor.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.class_core.sh:root/init.zetaw.class_core.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.cmm.usb.sh:root/init.zetaw.cmm.usb.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.early_boot.sh:root/init.zetaw.early_boot.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.factory.sh:root/init.zetaw.factory.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.rc:root/init.zetaw.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.sh:root/init.zetaw.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.ssr.sh:root/init.zetaw.ssr.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.syspart_fixup.sh:root/init.zetaw.syspart_fixup.sh \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.usb.rc:root/init.zetaw.usb.rc \
-    $(LOCAL_PATH)/configs/rootdir/init.zetaw.usb.sh:root/init.zetaw.usb.sh \
-    $(LOCAL_PATH)/configs/rootdir/ueventd.g2m.rc:root/ueventd.g2m.rc \
+    device/lge/d620/rootdir/fstab.g2m:root/fstab.g2m \
+    device/lge/d620/rootdir/fstab_f2fs.g2m:root/fstab_f2fs.g2m \
+    device/lge/d620/rootdir/init.class_main.sh:root/init.class_main.sh \
+    device/lge/d620/rootdir/init.lge.early.rc:root/init.lge.early.rc \
+    device/lge/d620/rootdir/init.lge.log.rc:root/init.lge.log.rc \
+    device/lge/d620/rootdir/init.lge.rc:root/init.lge.rc \
+    device/lge/d620/rootdir/init.mdm.sh:root/init.mdm.sh \
+    device/lge/d620/rootdir/init.usb.rc:root/init.usb.rc \
+    device/lge/d620/rootdir/init.g2m.rc:root/init.g2m.rc \
+    device/lge/d620/rootdir/init.g2m.usb.rc:root/init.g2m.usb.rc \
+    device/lge/d620/rootdir/init.g2m_product.rc:root/init.g2m_product.rc \
+    device/lge/d620/rootdir/init.zetaw.bt_vendor.rc:root/init.zetaw.bt_vendor.rc \
+    device/lge/d620/rootdir/init.zetaw.class_core.sh:root/init.zetaw.class_core.sh \
+    device/lge/d620/rootdir/init.zetaw.cmm.usb.sh:root/init.zetaw.cmm.usb.sh \
+    device/lge/d620/rootdir/init.zetaw.early_boot.sh:root/init.zetaw.early_boot.sh \
+    device/lge/d620/rootdir/init.zetaw.factory.sh:root/init.zetaw.factory.sh \
+    device/lge/d620/rootdir/init.zetaw.rc:root/init.zetaw.rc \
+    device/lge/d620/rootdir/init.zetaw.ril.sh:root/init.zetaw.ril.sh \
+    device/lge/d620/rootdir/init.zetaw.sh:root/init.zetaw.sh \
+    device/lge/d620/rootdir/init.zetaw.ssr.sh:root/init.zetaw.ssr.sh \
+    device/lge/d620/rootdir/init.zetaw.syspart_fixup.sh:root/init.zetaw.syspart_fixup.sh \
+    device/lge/d620/rootdir/init.zetaw.usb.rc:root/init.zetaw.usb.rc \
+    device/lge/d620/rootdir/init.zetaw.usb.sh:root/init.zetaw.usb.sh \
+    device/lge/d620/rootdir/ueventd.g2m.rc:root/ueventd.g2m.rc \
+    device/lge/d620/rootdir/sbin/bbx:root/sbin/bbx \
+    device/lge/d620/rootdir/fscheck.sh:root/fscheck.sh
 
-# CWM Recovery
+# TWRP
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/rootdir/recovery.fstab:recovery/root/recovery.fstab
+    device/lge/d620/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -153,7 +158,7 @@ PRODUCT_PACKAGES += \
     tcpdump \
     Torch
 
-# Needed?
+# Misc
 PRODUCT_PACKAGES += \
     com.android.future.usb.accessory
 
@@ -181,7 +186,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     p2p_supplicant_overlay.conf \
     wpa_supplicant_overlay.conf \
-    libwcnss_qmi
+    libwcnss_qmi \
 
 # Charger
 PRODUCT_PACKAGES += charger charger_res_images
@@ -222,7 +227,14 @@ PRODUCT_PACKAGES += qrngp
 # Utilities
 PRODUCT_PACKAGES += \
     charge_only_mode \
+    mkfs.f2fs \
+    fsck.f2fs \
+    fibmap.f2fs \
     wcnss_service
+
+# EGL config
+PRODUCT_COPY_FILES += \
+    device/lge/d620/prebuilt/egl.cfg:system/lib/egl/egl.cfg
 
 # Opengles version 3
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -230,12 +242,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # QCOM Display
 PRODUCT_PROPERTY_OVERRIDES += \
-    debug.sf.hw=1 \
     debug.egl.hw=1 \
-    debug.composition.type=c2d \
+    debug.sf.hw=1 \
+    debug.composition.type=dyn \
     persist.hwc.mdpcomp.enable=true \
     debug.mdpcomp.logs=0 \
-    dev.pm.dyn_samplingrate=1
+    debug.enabletr=0
+
+#Softkeys
+PRODUCT_PROPERTY_OVERRIDES += \
+    qemu.hw.mainkeys=0
 
 # QCOM Display
 PRODUCT_PACKAGES += \
@@ -267,7 +283,7 @@ PRODUCT_PACKAGES += \
     resize2fs \
     setup_fs
 
-# WiFi
+#wifi
 PRODUCT_PACKAGES += \
     hostapd.accept \
     hostapd.deny \
@@ -277,6 +293,10 @@ PRODUCT_PACKAGES += \
 # QCOM
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true
+
+# simulate sdcard on /data/media
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.fuse_sdcard=true
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -292,6 +312,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qualcomm.bt.hci_transport=smd \
     ro.bluetooth.request.master=true \
     ro.bluetooth.remote.autoconnect=true
+
+# Media
+PRODUCT_PROPERTY_OVERRIDES += \
+    lpa.decode=true \
+    qcom.hw.aac.encoder=false \
+    af.resampler.quality=255 \
+    persist.audio.lowlatency.rec=false
 
 # WiFi
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -342,17 +369,21 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.ril.transmitpower=true \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.call_type=1 \
-    ro.config.vc_call_vol_steps=6 \
+    ro.config.vc_call_vol_steps=7 \
     ro.modem.no_wdog_chk=1 \
-    persist.call_recording.enabled=1
+    telephony.lteOnCdmaDevice=1
 
 # NFC packages
 PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
+    nfc_nci.d620 \
     com.android.nfc_extras
 
-NFCEE_ACCESS_PATH := $(LOCAL_PATH)/configs/system/etc/nfcee_access.xml
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.nfc.port=I2C
+
+NFCEE_ACCESS_PATH := device/lge/d620/prebuilt/etc/nfcee_access.xml
 
 # QC time services
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -362,14 +393,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.ksm.default=1
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-
-PRODUCT_LOCALES := en_GB
+PRODUCT_LOCALES := en_US
 PRODUCT_LOCALES += hdpi
 PRODUCT_AAPT_CONFIG := normal hdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
-PRODUCT_RESTRICT_VENDOR_FILES := false
+$(call inherit-product, vendor/lge/d620/d620-vendor.mk)
 
-# Inherit from hardware-specific part of the product configuration
-$(call inherit-product, device/lge/d620/device.mk)
