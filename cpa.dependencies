@@ -24,15 +24,15 @@
     "target_path": "hardware/qcom/media-caf-new"
   },
   {
-  "remote": "github",
-  "revision": "kitkat",
-  "repository": "CRXTeam/proprietary_vendor_d620",
-  "target_path": "vendor/lge/d620"
+    "remote": "github",
+    "revision": "kitkat",
+    "repository": "CRXTeam/proprietary_vendor_d620",
+    "target_path": "vendor/lge/d620"
   },
   {
-      "remote":       "github",
-      "revision":     "master",
-      "repository":   "Zaaap/android_kernel_lge_d620",
-      "target_path":  "kernel/lge/d620"
-   }
+    "remote":       "github",
+    "revision":     "master",
+    "repository":   "CRXTeam/android_kernel_lge_d620",
+    "target_path":  "kernel/lge/d620"
+  }
 ]
