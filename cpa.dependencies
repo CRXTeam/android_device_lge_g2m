@@ -32,7 +32,7 @@
   {
     "remote":       "github",
     "revision":     "master",
-    "repository":   "CRXTeam/android_kernel_lge_d620",
+    "repository":   "partyajak/android_kernel_lge_g2m",
     "target_path":  "kernel/lge/d620"
   }
 ]
