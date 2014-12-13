@@ -77,6 +77,7 @@ void init_msm_properties(unsigned long msm_id, unsigned long msm_ver, char *boar
     UNUSED(msm_ver);
     UNUSED(board_type);
 
+    property_set("ro.telephony.ril_class", "G2MRIL");
     property_set("ro.product.device", "g2m");
     property_set("ro.product.model", "LG-D620");
     property_set("ro.nfc.port", "I2C");
