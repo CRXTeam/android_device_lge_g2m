@@ -69,6 +69,10 @@ PRODUCT_COPY_FILES += \
     device/lge/d620/prebuilt/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     device/lge/d620/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
     device/lge/d620/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \    
     device/lge/d620/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/d620/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/d620/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
