@@ -191,7 +191,6 @@ PRODUCT_COPY_FILES += device/lge/d620/rootdir/twrp.fstab:recovery/root/etc/twrp.
 PRODUCT_COPY_FILES += device/lge/d620/rootdir/extra.fstab:recovery/root/etc/extra.fstab
 
 # Nfc
-BOARD_NFC_HAL_SUFFIX := d620
 BOARD_NFC_CHIPSET := pn547
 
 # SELinux

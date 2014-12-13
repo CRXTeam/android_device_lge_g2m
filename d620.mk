@@ -378,7 +378,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PACKAGES += \
     NfcNci \
     Tag \
-    nfc_nci.d620 \
+    nfc_nci.pn54x.default \
     com.android.nfc_extras
 
 PRODUCT_PROPERTY_OVERRIDES += \
