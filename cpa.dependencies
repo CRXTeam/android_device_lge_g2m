@@ -31,7 +31,7 @@
   },
   {
     "remote":       "github",
-    "revision":     "master",
+    "revision":     "lollipop",
     "repository":   "CRXTeam/android_kernel_lge_d620",
     "target_path":  "kernel/lge/d620"
   }
