@@ -5,7 +5,7 @@
 /dev/msm_amrnb.*               u:object_r:audio_device:s0
 /dev/msm_amrwb.*               u:object_r:audio_device:s0
 /dev/msm_aac.*                 u:object_r:audio_device:s0
-
+/sys/devices/platform/tspdrv/nforce_timed           u:object_r:vibeamp_sysfs:s0
 /dev/qseecom                   u:object_r:tee_device:s0
 
 # Jpeg Engine support
