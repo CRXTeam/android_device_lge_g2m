@@ -1,62 +1,161 @@
-#
 # system.prop for d620
-#
-############################################################ CLEANUP ME PLEASE QUARX ###########################################################
+
 
 # Use reference RIL for initial bringup
+
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
-persist.rild.nitz_plmn=
-persist.rild.nitz_long_ons_0=
-persist.rild.nitz_long_ons_1=
-persist.rild.nitz_long_ons_2=
-persist.rild.nitz_long_ons_3=
-persist.rild.nitz_short_ons_0=
-persist.rild.nitz_short_ons_1=
-persist.rild.nitz_short_ons_2=
-persist.rild.nitz_short_ons_3=
 ril.subscription.types=NV,RUIM
-DEVICE_PROVISIONED=1
-persist.radio.msgtunnel.start=false
-# Start in cdma mode
-#
-# System props for telephony
-# System prop to turn on CdmaLTEPhone always
-# LGE_CHANGE_S by.mun@lge.com 2013-08-14 turn off CdmaLTEPhone for W7
+ro.telephony.ril_class=LgeG2MRIL
+ro.telephony.default_cdma_sub=0
+ro.telephony.get_imsi_from_sim=true
+ro.telephony.default_network=8
+ro.cdma.subscribe_on_ruim_ready=true
 telephony.lteOnCdmaDevice=1
-ro.telephony.default_network=0
+
+# RIL - Proprietary lib properties
+persist.radio.add_power_save=1
+persist.radio.snapshot_enabled=1
+persist.radio.snapshot_timer=22
+ro.ril.wp.feature=1
+ro.use_data_netmgrd=true
 
 ro.ril.enable.amr.wideband=1
 ro.lge.proximity.delay=25
 ro.telephony.call_ring.delay=0
 
+#
+# system props for the cne module
+#
+persist.cne.feature=1
+
+
+# Skip /sys/power/wait_for_fb_* nodes and
+# force FB to be always on
+debug.sf.fb_always_on=1
+
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=c2d
+persist.hwc.mdpcomp.enable=true
+debug.mdpcomp.logs=0
+dalvik.vm.heapsize=36m
+dev.pm.dyn_samplingrate=1
+
+persist.demo.hdmirotationlock=false
+ro.hdmi.enable=true
+tunnel.decode=true
+tunnel.audiovideo.decode=true
+lpa.decode=false
+lpa.use-stagefright=true
+qcom.hw.aac.encoder=true
+
 # NFC 	
 debug.nfc.fw_download=true	
 debug.nfc.fw_boot_download=false	
 debug.nfc.se=true	
+
+#system props for the MM modules
+
+media.stagefright.enable-player=true
+media.stagefright.enable-http=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-scan=true
+mmp.enable.3g2=true
+media.aac_51_output_enabled=true
+mm.enable.smoothstreaming=true
+#9273 is decimal sum of supported codecs in AAL
+#codecs:(PARSER_)AVI AC3 ASF AAC QCP DTS 3G2 MP2TS
+mm.enable.qcom_parser=37491
+
+#snapdragon value add features
+#
+ro.qc.sdk.audio.ssr=false
+
+#property to enable user to access Google WFD settings
+persist.debug.wfd.enable=1
+##property to choose between virtual/external wfd display
+persist.sys.wfd.virtual=0
+tunnel.audio.encode = true
+
+#use VERY_HIGH_QUALITY for audio resampler
+af.resampler.quality=4
+
+#System props for vibrator
+ro.config.vibrate_type=2
+
+
+#// LGE_CHANGE_S, [Net_Patch_0300][CALL_FRW][COMMON], 2012-05-25, Airplane Mode Pop-Up display property value {
+ro.airplane.phoneapp=1
+#// LGE_CHANGE_E, [Net_Patch_0300][CALL_FRW][COMMON], 2012-05-25, Airplane Mode Pop-Up display property value }
+# system prop for NFC DT
 ro.nfc.port=I2C
 
-persist.radio.adb_log_on=1
-persist.radio.qcril_am_enabled=1
+#
+# ADDITIONAL_BUILD_PROPERTIES
+#
+log.tag.GpsLocationProvider=DEBUG
+log.tag.LocationManagerService=DEBUG
+log.tag.NlpProxy=DEBUG
+log.tag.LocSvc_java=DEBUG
+ro.build.target_operator=GLOBAL
+ro.build.target_country=COM
+ro.lge.swversion=D62010g
+ro.lge.swversion_short=V10g
+ro.lge.swversion_rev=0
+ro.lge.factoryversion=LGD620AT-00-V10g-GLOBAL-COM-JUL-04-2014+0
+ro.lge.lcd_default_brightness=157
+ro.lge.capp_smartcard_ac_gp=false
+ro.lge.capp_smartcard_ac_gto=false
+ro.lge.capp_smartcard_lgril=false
+ro.lge.capp_smartcard_uicc=false
+ro.lge.capp_smartcard_smartmx=false
+ro.qc.sdk.audio.fluencetype=none
+persist.audio.fluence.voicecall=false
+persist.audio.fluence.voicerec=false
+persist.audio.fluence.speaker=false
+ime_vibration_pattern=0:20
+ro.lge.vib_duration_margin=20
+bluetooth.chip.vendor=qcom
+bluetooth.pan=true
+persist.service.bt.support.sap=true
+service.bt.support.busytone=true
+ro.config.vc_call_vol_steps=6
+ro.config.vc_call_vol_default=3
+ro.lge.bt_gain_control_factor=1
+ro.build.sbp=1
+ro.config.ringtone=01_Lifes_Good_VBC.ogg
+ro.config.notification_sound=Crystal.ogg
+ro.config.alarm_alert=Lifes_Good_Alarm.ogg
+ro.config.timer_alert=Timer.ogg
+ro.com.google.gmsversion=4.4_r3
+ro.setupwizard.mode=DISABLED
+ro.livewallpaper.map=DISABLED
+ro.com.google.apphider=on
+ro.lge.vib_magnitude_index=0,20,40,60,80,100,120,127
+ro.sdcrypto.syscall=378
+ro.opengles.version=131072
+ro.sf.lcd_density=240
 wlan.chip.vendor=qcom
 wlan.chip.version=wcn
 wifi.lge.patch=true
+dhcp.dlna.using=false
 wifi.lge.sleeppolicy=0
 wifi.lge.offdelay=false
 wlan.lge.concurrency=MCC
 wlan.lge.supportsimaka=YES
 wifi.lge.hanglessid=false
 drm.service.enabled=true
-persist.lg.data.autoprof.msim=true
-persist.cne.feature=1
-debug.sf.fb_always_on=1
-persist.hwc.mdpcomp.enable=true
-dev.pm.dyn_samplingrate=1
-mmp.enable.3g2=true
-media.aac_51_output_enabled=true
-mm.enable.smoothstreaming=true
-mm.enable.qcom_parser=37491
-vidc.debug.level=0
+ro.lge.audio_soundexception=true
+ro.lge.audio_soundprofile=true
+net.tethering.noprovisioning=true
+persist.lg.data.fd=-1
+persist.qcril.disable_retry=true
+persist.service.crash.enable=0
+audio.offload.disable=0
+lge.normalizer.param=Version2/true/7.0/true/12000/1.0/4000/0.55
 ro.qualcomm.sensors.qmd=false
 ro.qc.sdk.sensors.gestures=true
 ro.qualcomm.sensors.pedometer=false
@@ -70,25 +169,41 @@ ro.qualcomm.sensors.georv=true
 ro.qc.sensors.smgr_mag_cal_en=false
 ro.qc.sensors.max_grav_no_gyro=50
 ro.qc.sensors.max_geomag_rotvec=50
-debug.qualcomm.sns.hal=1
-debug.qualcomm.sns.daemon=e
-debug.qualcomm.sns.libsensor1=e
+debug.qualcomm.sns.hal=d
+debug.qualcomm.sns.daemon=w
+debug.qualcomm.sns.libsensor1=w
 persist.sys.ssr.restart_level=3
 persist.sys.strictmode.disable=true
 persist.sys.logkit.ctrlcode=0
 ro.lge.irrc.type=sw
-persist.debug.wfd.enable=1
-persist.sys.wfd.virtual=0
-tunnel.audio.encode = true
-persist.gsm.sms.forcegsm7=1
-ro.sf.lcd_density=240
+ro.vendor.extension_library=/vendor/lib/libqc-opt.so
+persist.radio.apm_sim_not_pwdn=1
+ro.carrier=unknown
+dalvik.vm.heapstartsize=8m
+dalvik.vm.heapgrowthlimit=96m
+dalvik.vm.heapsize=256m
+dalvik.vm.heaptargetutilization=0.75
+dalvik.vm.heapminfree=2m
+dalvik.vm.heapmaxfree=8m
+lge.signed_image=true
+ro.lge.lcd_auto_brightness_mode=false
+ro.lge.capp_ZDi_O=true
+lge.zdi.actionsend=false
+lge.zdi.onactivityresult=true
+lge.zdi.dragdropintent=false
+ro.lge.capp_almond=true
+ro.lge.qslide.max_window=2
+ro.lge.capp_cupss.rootdir=/cust
+persist.data.sbp.update=0
+ro.telephony.default_network=9
+lge.nfc.vendor=nxp
+ro.lge.custLanguageSet=true
+ro.lge.dataprotect=1
+persist.radio.do_not_init_csvt=1
+persist.sys.dalvik.vm.lib=libdvm.so
+net.bt.name=Android
+dalvik.vm.stack-trace-file=/data/anr/traces.txt
 ro.qc.sdk.izat.premium_enabled=1
 ro.qc.sdk.izat.service_mask=0x0
 persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
-persist.qcril.disable_retry=true
-persist.service.crash.enable=0
-ro.config.vc_call_vol_steps=6
-persist.data.sbp.update=0
-persist.radio.rat_on=legacy
-

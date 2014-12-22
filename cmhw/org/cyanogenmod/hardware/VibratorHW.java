@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2014 The CyanogenMod Project
+ * Copyright (C) 2013 The CyanogenMod Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,21 +18,30 @@ package org.cyanogenmod.hardware;
 
 import org.cyanogenmod.hardware.util.FileUtils;
 
-public class TapToWake {
+public class VibratorHW {
 
-    private static String CONTROL_PATH = "/sys/devices/virtual/input/lge_touch/touch_gesture";
-    private static boolean mEnabled = true;
+    private static String NFORCE_PATH = "/sys/devices/platform/tspdrv/nforce_timed";
 
     public static boolean isSupported() {
         return true;
     }
 
-    public static boolean isEnabled()  {
-        return mEnabled;
+    public static int getMaxIntensity()  {
+        return 127;
     }
-
-    public static boolean setEnabled(boolean state)  {
-        mEnabled = state;
-        return FileUtils.writeLine(CONTROL_PATH, (state ? "1" : "0"));
+    public static int getMinIntensity()  {
+        return 1;
+    }
+    public static int getWarningThreshold()  {
+        return 90;
+    }
+    public static int getCurIntensity()  {
+        return Integer.parseInt(FileUtils.readOneLine(NFORCE_PATH));
+    }
+    public static int getDefaultIntensity()  {
+        return 65;
+    }
+    public static boolean setIntensity(int intensity)  {
+        return FileUtils.writeLine(NFORCE_PATH, String.valueOf(intensity));
     }
 }
