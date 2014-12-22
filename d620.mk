@@ -133,6 +133,7 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_PACKAGES += \
+    audio.primary.msm8226 \
     audio_policy.msm8226 \
     audio.a2dp.default \
     audio.usb.default \
@@ -142,6 +143,9 @@ PRODUCT_PACKAGES += \
     libqcomvisualizer \
     libqcompostprocbundle \
     libqcomvoiceprocessing \
+    libaudioroute \
+    libtinyalsa \
+    libtinycompress \
     tinycap \
     tinymix \
     tinypcminfo \
@@ -298,9 +302,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     com.qc.hardware=true
 
-# simulate sdcard on /data/media
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.fuse_sdcard=true
 
 # Audio
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -375,7 +376,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.call_type=1 \
     ro.config.vc_call_vol_steps=7 \
     ro.modem.no_wdog_chk=1 \
-    telephony.lteOnCdmaDevice=1 \
     persist.call_recording.enabled=1
 
 # NFC packages
