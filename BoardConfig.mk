@@ -122,10 +122,10 @@ BOARD_HARDWARE_CLASS := device/lge/d620/cmhw/
 
 # SELinux policies
 # qcom sepolicy
-include device/qcom/sepolicy/sepolicy.mk
+#include device/qcom/sepolicy/sepolicy.mk
 
-BOARD_SEPOLICY_DIRS += \
-        device/lge/d620/sepolicy
+#BOARD_SEPOLICY_DIRS += \
+#        device/lge/d620/sepolicy
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/d620/bluetooth
