@@ -6,10 +6,10 @@
 rild.libpath=/vendor/lib/libril-qc-qmi-1.so
 rild.libargs=-d /dev/smd0
 ril.subscription.types=NV,RUIM
-ro.telephony.ril_class=G2MRIL
+ro.telephony.ril_class=LgeG2MRIL
 ro.telephony.default_cdma_sub=0
 ro.telephony.get_imsi_from_sim=true
-ro.telephony.default_network=8
+ro.telephony.default_network=9
 ro.cdma.subscribe_on_ruim_ready=true
 telephony.lteOnCdmaDevice=1
 
@@ -49,11 +49,6 @@ tunnel.audiovideo.decode=true
 lpa.decode=false
 lpa.use-stagefright=true
 qcom.hw.aac.encoder=true
-
-# NFC 	
-debug.nfc.fw_download=true	
-debug.nfc.fw_boot_download=false	
-debug.nfc.se=true	
 
 #system props for the MM modules
 
@@ -195,7 +190,6 @@ ro.lge.capp_almond=true
 ro.lge.qslide.max_window=2
 ro.lge.capp_cupss.rootdir=/cust
 persist.data.sbp.update=0
-ro.telephony.default_network=9
 lge.nfc.vendor=nxp
 ro.lge.custLanguageSet=true
 ro.lge.dataprotect=1

@@ -81,8 +81,6 @@ on init
         /dev/block/platform/msm_sdcc.1/by-name/sns \
         no_reboot
     # LGE_UPDATE_END
-    # NFC fix
-    symlink /dev/pn547 /dev/pn544
 
 # SD Enc
     setprop ro.ssbd.session /dev/block/platform/msm_sdcc.1/by-name/eksst
@@ -97,8 +95,6 @@ on post-fs
 	mkdir /data/misc/audit 02750 system system
 	chmod 664 /sys/devices/virtual/input/lge_touch/touch_gesture
 	chown system system /sys/devices/virtual/input/lge_touch/touch_gesture
-	chmod 664 /sys/devices/virtual/timed_output/vibrator/vtg_level
-	chown system system /sys/devices/virtual/timed_output/vibrator/vtg_level
 	chmod 664 /sys/devices/virtual/input/lge_touch/knock_on_type
 	chown system system /sys/devices/virtual/input/lge_touch/knock_on_type
 	chmod 664 /sys/devices/virtual/input/lge_touch/global_access_pixel

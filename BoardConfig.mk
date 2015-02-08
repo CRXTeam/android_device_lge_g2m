@@ -24,44 +24,44 @@
 USE_CAMERA_STUB := false
 TARGET_NO_BOOTLOADER := true
 
-TARGET_SPECIFIC_HEADER_PATH += device/lge/d620/include
+TARGET_SPECIFIC_HEADER_PATH += device/lge/g2m/include
+
+# Assert
+TARGET_OTA_ASSERT_DEVICE := g2m,d620
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
-#TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_LIBINIT_DEFINES_FILE := device/lge/d620/init/init_g2m.c
+TARGET_INIT_VENDOR_LIB := libinit_msm
+TARGET_LIBINIT_DEFINES_FILE := device/lge/g2m/init/init_g2m.c
 
 # Platform
 TARGET_ARCH := arm
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 TARGET_BOARD_PLATFORM := msm8226
-TARGET_CPU_VARIANT := krait
+TARGET_CPU_VARIANT := cortex-a7
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USE_KINGFISHER_OPTIMIZATION := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_BOOTLOADER_BOARD_NAME := d620
-
-TARGET_SCREEN_HEIGHT := 960
-TARGET_SCREEN_WIDTH := 540
+TARGET_BOOTLOADER_BOARD_NAME := msm8226
 
 # Kernel image
 BOARD_KERNEL_SEPARATED_DT := true
-BOARD_CUSTOM_BOOTIMG_MK := device/lge/d620/mkbootimg.mk
-TARGET_KERNEL_SOURCE := kernel/lge/d620
-TARGET_KERNEL_CONFIG := cm11_g2m_defconfig
+BOARD_CUSTOM_BOOTIMG_MK := device/lge/g2m/mkbootimg.mk
+TARGET_KERNEL_SOURCE := kernel/lge/msm8226
+TARGET_KERNEL_CONFIG := Kool-aid_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 msm_rtb.filter=0x37 androidboot.hardware=g2m
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_OFFSET := 0x00008000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x01e00000
-#TARGET_PREBUILT_KERNEL := device/lge/d620/kernel
+
 # Offmode Charging
 COMMON_GLOBAL_CFLAGS += \
     -DBOARD_CHARGING_CMDLINE_NAME='"androidboot.mode"' \
     -DBOARD_CHARGING_CMDLINE_VALUE='"chargerlogo"'
+
 # Enable dex-preoptimization to speed up first boot sequence
 WITH_DEXPREOPT := true
 
@@ -72,15 +72,17 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE -DLG_CAMERA_HARDWARE
 TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_USES_QCOM_BSP := true
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+
 # RIL
-BOARD_RIL_CLASS := ../../../device/lge/d620/ril/
+BOARD_RIL_CLASS := ../../../device/lge/g2m/ril/
 
 # Audio
 AUDIO_FEATURE_DISABLED_FM := false
-AUDIO_FEATURE_DISABLED_SSR := true
 BOARD_HAVE_QCOM_FM := true
-AUDIO_FEATURE_DISABLED_ANC_HEADSET := true
-AUDIO_FEATURE_DISABLED_DS1_DOLBY_DDP := true
 AUDIO_FEATURE_ENABLED_COMPRESS_VOIP := true
 AUDIO_FEATURE_ENABLED_EXTN_FORMATS := true
 AUDIO_FEATURE_ENABLED_FLUENCE := true
@@ -94,17 +96,14 @@ BOARD_USES_ALSA_AUDIO := true
 BOARD_USES_FLUENCE_INCALL := true
 BOARD_USES_SEPERATED_AUDIO_INPUT := true
 BOARD_USES_SEPERATED_VOICE_SPEAKER := true
-TARGET_QCOM_AUDIO_VARIANT := caf
 TARGET_USES_QCOM_COMPRESSED_AUDIO := true
-TARGET_QCOM_MEDIA_VARIANT := caf-new
 
 # GPS
 TARGET_NO_RPC := true
 
 # Graphics
-BOARD_EGL_CFG := device/lge/d620/prebuilt/egl.cfg
+BOARD_EGL_CFG := device/lge/g2m/prebuilt/egl.cfg
 TARGET_DISPLAY_USE_RETIRE_FENCE := true
-TARGET_QCOM_DISPLAY_VARIANT := caf-new
 USE_OPENGL_RENDERER := true
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
@@ -118,17 +117,10 @@ TARGET_USES_CPU_BOOST_HINT := true
 TARGET_HW_DISK_ENCRYPTION := true
 
 # Hardware tunables framework
-BOARD_HARDWARE_CLASS := device/lge/d620/cmhw/
-
-# SELinux policies
-# qcom sepolicy
-#include device/qcom/sepolicy/sepolicy.mk
-
-#BOARD_SEPOLICY_DIRS += \
-#        device/lge/d620/sepolicy
+BOARD_HARDWARE_CLASS := device/lge/g2m/cmhw/
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/d620/bluetooth
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/lge/g2m/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -149,13 +141,6 @@ WIFI_DRIVER_FW_PATH_AP := "ap"
 # Enable WEBGL in WebKit
 ENABLE_WEBGL := true
 TARGET_FORCE_CPU_UPLOAD := true
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-TARGET_USES_QCOM_HW := true
-
-# QCOM enhanced A/V
-TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
@@ -183,7 +168,7 @@ BOARD_HAS_LARGE_FILESYSTEM := true
 
 # TWRP Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_RECOVERY_FSTAB := device/lge/d620/rootdir/recovery.fstab
+TARGET_RECOVERY_FSTAB := device/lge/g2m/rootdir/recovery.fstab
 RECOVERY_FSTAB_VERSION := 2
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 DEVICE_RESOLUTION := 540x960
@@ -206,11 +191,15 @@ RECOVERY_SDCARD_ON_DATA := true
 HAVE_SELINUX := true
 BOARD_HAS_NO_MISC_PARTITION := true
 TARGET_RECOVERY_QCOM_RTC_FIX := true
-TW_SCREEN_BLANK_ON_BOOT := true
+TARGET_INCREMENTAL_OTA_VERBATIM_FILES := system/app/Provision.apk
 
-PRODUCT_COPY_FILES += device/lge/d620/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
-PRODUCT_COPY_FILES += device/lge/d620/rootdir/extra.fstab:recovery/root/etc/extra.fstab
+PRODUCT_COPY_FILES += device/lge/g2m/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+
+# Enable Minikin text layout engine (will be the default soon)
+USE_MINIKIN := true
+
+# Include an expanded selection of fonts
+EXTENDED_FONT_FOOTPRINT := true
 
 # Nfc
 BOARD_NFC_CHIPSET := pn547
-

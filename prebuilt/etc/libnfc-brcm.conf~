@@ -45,8 +45,8 @@ NFC_WAKE_DELAY=20
 #  POST_POWER_OFF_DELAY
 #    Delay after turning off chip, before USERIAL_close returns (default 0)
 #
-POWER_ON_DELAY=300
-PRE_POWER_OFF_DELAY=0
+#POWER_ON_DELAY=300
+#PRE_POWER_OFF_DELAY=0
 #POST_POWER_OFF_DELAY=0
 
 ###############################################################################
@@ -204,7 +204,7 @@ FW_PRE_PATCH="/vendor/firmware/bcm2079x_pre_firmware.ncd"
 #    "hwtun"            (HW Tunnel)
 #    "/dev/bcmspinfc"   (SPI)
 #    "/dev/btusb0"      (BT USB)
-TRANSPORT_DRIVER="/dev/bcm2079x-i2c"
+TRANSPORT_DRIVER="/dev/bcm2079x"
 
 ###############################################################################
 # power control driver
@@ -217,12 +217,12 @@ TRANSPORT_DRIVER="/dev/bcm2079x-i2c"
 #    "/dev/bcmi2cnfc"   (I2C)
 #    "/dev/bcmspinfc"   (SPI)
 #    i2c and spi driver may be used to control NFC_EN and NFC_WAKE signal
-POWER_CONTROL_DRIVER="/dev/bcm2079x-i2c"
+POWER_CONTROL_DRIVER="/dev/bcm2079x"
 
 ###############################################################################
 # I2C transport driver options
 #
-BCMI2CNFC_ADDRESS=0x77
+BCMI2CNFC_ADDRESS=0
 
 ###############################################################################
 # I2C transport driver try to read multiple packets in read() if data is available
@@ -317,3 +317,6 @@ PRESERVE_STORAGE=0x01
 # NXP PN547C2 0x02
 # NXP PN65T 0x03
 NFA_MAX_EE_SUPPORTED=0x03
+###############################################################################
+# NCI Hal Module name
+NCI_HAL_MODULE="nfc_nci.pn54x"

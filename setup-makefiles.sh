@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VENDOR=lge
-DEVICE=d620
+DEVICE=g2m
 OUTDIR=vendor/$VENDOR/$DEVICE
 MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
@@ -103,4 +103,3 @@ EOF
 
 USE_CAMERA_STUB := false
 EOF
-
