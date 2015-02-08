@@ -67,6 +67,10 @@ PRODUCT_COPY_FILES += \
     device/lge/g2m/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/g2m/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/g2m/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
+    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     device/lge/g2m/prebuilt/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf \
     device/lge/g2m/prebuilt/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
     device/lge/g2m/prebuilt/usr/keylayout/gpio-keys_g2m.kl:system/usr/keylayout/gpio-keys_g2m.kl \
