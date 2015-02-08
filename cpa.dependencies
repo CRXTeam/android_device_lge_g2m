@@ -27,7 +27,7 @@
     "remote": "github",
     "revision": "lollipop",
     "repository": "CRXTeam/proprietary_vendor_d620",
-    "target_path": "vendor/lge/d620"
+    "target_path": "vendor/lge/g2m"
   },
   {
     "remote":       "github",
