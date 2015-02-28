@@ -19,7 +19,7 @@
   },
   {
     "remote":       "github",
-    "revision":     "lollipop",
+    "revision":     "cm-12.0",
     "repository":   "maxprzemo/kool-aid_kernel_lge_msm8226_g2m",
     "target_path":  "kernel/lge/msm8226"
   }
