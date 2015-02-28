@@ -13,7 +13,7 @@
   },
   {
     "remote": "github",
-    "revision": "master",
+    "revision": "cm-12.0",
     "repository": "maxprzemo/android_vendor_lge_g2m",
     "target_path": "vendor/lge/g2m"
   },
