@@ -13,26 +13,14 @@
   },
   {
     "remote": "github",
-    "revision": "cm-11.0",
-    "repository": "CyanogenMod/android_hardware_qcom_display-caf-new",
-    "target_path": "hardware/qcom/display-caf-new"
-  },
-  {
-    "remote": "github",
-    "revision": "cm-11.0",
-    "repository": "CyanogenMod/android_hardware_qcom_media-caf-new",
-    "target_path": "hardware/qcom/media-caf-new"
-  },
-  {
-    "remote": "github",
-    "revision": "lollipop",
-    "repository": "CRXTeam/proprietary_vendor_d620",
+    "revision": "master",
+    "repository": "maxprzemo/android_vendor_lge_g2m",
     "target_path": "vendor/lge/g2m"
   },
   {
     "remote":       "github",
     "revision":     "lollipop",
-    "repository":   "CRXTeam/android_kernel_lge_d620",
+    "repository":   "maxprzemo/kool-aid_kernel_lge_msm8226_g2m",
     "target_path":  "kernel/lge/msm8226"
   }
 ]

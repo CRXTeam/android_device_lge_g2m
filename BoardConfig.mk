@@ -26,26 +26,28 @@ TARGET_NO_BOOTLOADER := true
 
 TARGET_SPECIFIC_HEADER_PATH += device/lge/g2m/include
 
-# Assert
-TARGET_OTA_ASSERT_DEVICE := g2m,d620
-
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_msm
 TARGET_LIBINIT_DEFINES_FILE := device/lge/g2m/init/init_g2m.c
 
+# Assert
+TARGET_OTA_ASSERT_DEVICE := g2m,d620
+
 # Platform
 TARGET_ARCH := arm
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno305
 TARGET_BOARD_PLATFORM := msm8226
-TARGET_CPU_VARIANT := cortex-a7
+TARGET_CPU_VARIANT := krait
+TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 TARGET_USE_KINGFISHER_OPTIMIZATION := true
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
-TARGET_BOOTLOADER_BOARD_NAME := msm8226
+TARGET_BOOTLOADER_BOARD_NAME := MSM8226
 
 # Kernel image
 BOARD_KERNEL_SEPARATED_DT := true
@@ -55,6 +57,8 @@ TARGET_KERNEL_CONFIG := Kool-aid_defconfig
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 user_debug=31 msm_rtb.filter=0x37 androidboot.hardware=g2m
 BOARD_KERNEL_BASE := 0x00000000
 BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_TAGS_OFFSET := 0x01E00000
+BOARD_RAMDISK_OFFSET     := 0x02000000
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000 --tags_offset 0x01e00000
 
 # Offmode Charging
@@ -154,6 +158,9 @@ TARGET_BOOTANIMATION_TEXTURE_CACHE := false
 # Time services
 BOARD_USES_QC_TIME_SERVICES := true
 
+#Add support for firmare upgrade on 8226
+HAVE_SYNAPTICS_I2C_RMI4_FW_UPGRADE := true
+
 # Storage
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
@@ -194,6 +201,7 @@ TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_INCREMENTAL_OTA_VERBATIM_FILES := system/app/Provision.apk
 
 PRODUCT_COPY_FILES += device/lge/g2m/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+PRODUCT_COPY_FILES += device/lge/g2m/rootdir/extra.fstab:recovery/root/etc/extra.fstab
 
 # Enable Minikin text layout engine (will be the default soon)
 USE_MINIKIN := true
@@ -203,3 +211,40 @@ EXTENDED_FONT_FOOTPRINT := true
 
 # Nfc
 BOARD_NFC_CHIPSET := pn547
+
+
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += device/lge/g2m/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    device.te \
+    file.te \
+    file_contexts \
+    genfs_contexts \
+    hostapd.te \
+    init_shell.te \
+    kcal_dev.te \
+    kernel.te \
+    keystore.te \
+    lge_touch_sysfs.te \
+    mm-pp-daemon.te \
+    mm-qcamerad.te \
+    mpdecision.te \
+    nfc.te \
+    platform_app.te \
+    property.te \
+    property_contexts \
+    radio.te \
+    rmt_storage.te \
+    sensors.te \
+    servicemanager.te \
+    sysinit.te \
+    system_app.te \
+    tee.te \
+    thermal-engine.te \
+    time_data_file.te \
+    ueventd.te \
+    vold.te \
+    wcnss_service.te \
+    wpa.te

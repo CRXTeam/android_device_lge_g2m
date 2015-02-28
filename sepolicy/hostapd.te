@@ -1,1 +1,1 @@
-allow hostapd cgroup:dir { create add_name };
+allow hostapd wpa_device:chr_file r_file_perms;

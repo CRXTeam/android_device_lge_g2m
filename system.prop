@@ -121,9 +121,6 @@ ro.config.vc_call_vol_steps=6
 ro.config.vc_call_vol_default=3
 ro.lge.bt_gain_control_factor=1
 ro.build.sbp=1
-ro.config.ringtone=01_Lifes_Good_VBC.ogg
-ro.config.notification_sound=Crystal.ogg
-ro.config.alarm_alert=Lifes_Good_Alarm.ogg
 ro.config.timer_alert=Timer.ogg
 ro.com.google.gmsversion=4.4_r3
 ro.setupwizard.mode=DISABLED
@@ -201,3 +198,5 @@ ro.qc.sdk.izat.premium_enabled=1
 ro.qc.sdk.izat.service_mask=0x0
 persist.gps.qc_nlp_in_use=0
 ro.gps.agps_provider=1
+# USB mode
+persist.sys.usb.config=mtp

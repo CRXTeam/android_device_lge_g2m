@@ -1,1 +1,1 @@
-allow radio cache_file:file { lock open };
+allow radio lge_touch_sysfs:file rw_file_perms;

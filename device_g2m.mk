@@ -18,8 +18,18 @@ $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 
+
 # Specific overlay
 DEVICE_PACKAGE_OVERLAYS += device/lge/g2m/overlay
+
+
+# Keylayout
+PRODUCT_COPY_FILES += \
+    device/lge/g2m/idc/touch_dev.idc:system/usr/idc/touch_dev.idc
+
+PRODUCT_COPY_FILES += \
+    device/lge/g2m/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -45,9 +55,8 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml \
     frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     device/lge/g2m/prebuilt/etc/permissions/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
 
 # Configs
@@ -63,17 +72,10 @@ PRODUCT_COPY_FILES += \
     device/lge/g2m/prebuilt/etc/hostapd/hostapd.deny:system/etc/hostapd/hostapd.deny \
     device/lge/g2m/prebuilt/etc/hostapd/hostapd_default.conf:system/etc/hostapd/hostapd_default.conf \
     device/lge/g2m/prebuilt/etc/audio_policy.conf:system/etc/audio_policy.conf \
-    device/lge/g2m/prebuilt/etc/audio_effects.conf:system/etc/audio_effects.conf \
     device/lge/g2m/prebuilt/etc/media_codecs.xml:system/etc/media_codecs.xml \
     device/lge/g2m/prebuilt/etc/media_profiles.xml:system/etc/media_profiles.xml \
     device/lge/g2m/prebuilt/etc/mixer_paths.xml:system/etc/mixer_paths.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_ffmpeg.xml:system/etc/media_codecs_ffmpeg.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
-    frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml \
     device/lge/g2m/prebuilt/etc/thermal-engine-8226.conf:system/etc/thermal-engine-8226.conf \
-    device/lge/g2m/prebuilt/usr/idc/touch_dev.idc:system/usr/idc/touch_dev.idc \
-    device/lge/g2m/prebuilt/usr/keylayout/gpio-keys_g2m.kl:system/usr/keylayout/gpio-keys_g2m.kl \
     device/lge/g2m/prebuilt/etc/init.zetaw.fm.sh:system/etc/init.zetaw.fm.sh \
     device/lge/g2m/prebuilt/etc/init.zetaw.ssr.wifi.sh:system/etc/init.zetaw.ssr.wifi.sh \
     device/lge/g2m/prebuilt/etc/init.zetaw.wifi.sh:system/etc/init.zetaw.wifi.sh \
@@ -86,12 +88,7 @@ PRODUCT_COPY_FILES += \
     device/lge/g2m/prebuilt/etc/sec_config:system/etc/sec_config \
     device/lge/g2m/prebuilt/etc/izat.conf:system/etc/izat.conf \
     device/lge/g2m/prebuilt/etc/boot_fixup:system/etc/boot_fixup \
-    device/lge/g2m/prebuilt/etc/nfc-nci.conf:system/etc/nfc-nci.conf \
-    device/lge/g2m/prebuilt/etc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
-    device/lge/g2m/prebuilt/etc/nfcee_access.xml:system/etc/nfcee_access.xml \
-    device/lge/g2m/prebuilt/etc/quipc.conf:system/etc/quipc.conf \
-    device/lge/g2m/prebuilt/etc/init.d/10nfc_checker:system/etc/init.d/10nfc_checker \
-    device/lge/g2m/prebuilt/etc/init.d/11keys_checker:system/etc/init.d/11keys_checker
+    device/lge/g2m/prebuilt/etc/quipc.conf:system/etc/quipc.conf 
 
 # Ramdisk
 PRODUCT_COPY_FILES += \
@@ -102,7 +99,6 @@ PRODUCT_COPY_FILES += \
     device/lge/g2m/rootdir/init.lge.log.rc:root/init.lge.log.rc \
     device/lge/g2m/rootdir/init.lge.rc:root/init.lge.rc \
     device/lge/g2m/rootdir/init.mdm.sh:root/init.mdm.sh \
-    device/lge/g2m/rootdir/init.usb.rc:root/init.usb.rc \
     device/lge/g2m/rootdir/init.g2m.rc:root/init.g2m.rc \
     device/lge/g2m/rootdir/init.g2m.usb.rc:root/init.g2m.usb.rc \
     device/lge/g2m/rootdir/init.g2m_product.rc:root/init.g2m_product.rc \
@@ -375,14 +371,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.call_recording.enabled=1
 
 
-# NFC packages
+# NFC
 PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
     NfcNci \
-    Tag \
     nfc_nci.pn54x.default \
-    com.android.nfc_extras
+    Tag
 
-NFCEE_ACCESS_PATH := device/lge/g2m/prebuilt/etc/nfcee_access.xml
+PRODUCT_COPY_FILES += \
+    device/lge/g2m/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/lge/g2m/nfc/libnfc-nxp.conf:system/etc/libnfc-nxp.conf \
+    device/lge/g2m/nfc/nfc-nci.conf:system/etc/nfc-nci.conf \
+    device/lge/g2m//nfc/nfcee_access.xml:system/etc/nfcee_access.xml
 
 # QC time services
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -396,9 +396,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     qemu.hw.mainkeys=0
 
-# CmUpdater
-#PRODUCT_PROPERTY_OVERRIDES += \
-#    cm.updater.uri=http://api.quarx.cm-for.us/api \
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
